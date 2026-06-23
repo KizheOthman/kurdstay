@@ -1,0 +1,50 @@
+# -----------------------------
+# KurdStay private configuration
+# -----------------------------
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Android local settings and API keys
+android/local.properties
+android/key.properties
+android/app/src/main/res/values/secrets.xml
+
+# Signing keys
+*.jks
+*.keystore
+*.p12
+*.pem
+
+# Firebase client configuration
+# Ignore these because you do not want API keys visible
+lib/firebase_options.dart
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+# Firebase Functions local configuration
+functions/.env
+functions/.env.*
+!functions/.env.example
+functions/.secret.local
+
+# Google service-account credentials
+serviceAccountKey.json
+service-account.json
+**/serviceAccount*.json
+**/service-account*.json
+**/*service-account*.json
+
+# Firebase local files
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# IDE and generated files
+.idea/
+.vscode/
+.dart_tool/
+build/

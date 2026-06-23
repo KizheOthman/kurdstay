@@ -1,0 +1,137 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function currentUser() {
+      return get(
+        /databases/$(database)/documents/users/$(request.auth.uid)
+      ).data;
+    }
+
+    function isAdmin() {
+      return signedIn() && currentUser().role == 'admin';
+    }
+
+    function isOwner() {
+      return signedIn() && currentUser().role == 'owner';
+    }
+
+    function ownsHotel(hotelId) {
+      return signedIn() &&
+        get(
+          /databases/$(database)/documents/hotels/$(hotelId)
+        ).data.ownerId == request.auth.uid;
+    }
+
+    match /users/{userId} {
+      allow read: if signedIn() &&
+        (request.auth.uid == userId || isAdmin());
+
+      allow create: if signedIn() &&
+        request.auth.uid == userId &&
+        request.resource.data.role == 'user' &&
+        request.resource.data.active == true;
+
+      allow update: if isAdmin() ||
+        (
+          signedIn() &&
+          request.auth.uid == userId &&
+          request.resource.data.role == resource.data.role &&
+          request.resource.data.active == resource.data.active
+        );
+
+      allow delete: if isAdmin();
+    }
+
+    match /hotels/{hotelId} {
+      allow read: if resource.data.active == true ||
+        isAdmin() ||
+        (
+          signedIn() &&
+          resource.data.ownerId == request.auth.uid
+        );
+
+      allow create: if signedIn() &&
+        (
+          isAdmin() ||
+          (
+            isOwner() &&
+            request.resource.data.ownerId == request.auth.uid
+          )
+        );
+
+      allow update, delete: if isAdmin() ||
+        (
+          isOwner() &&
+          resource.data.ownerId == request.auth.uid &&
+          request.resource.data.ownerId == resource.data.ownerId
+        );
+
+      match /rooms/{roomId} {
+        allow read: if true;
+
+        allow create, update, delete: if isAdmin() ||
+          ownsHotel(hotelId);
+      }
+    }
+
+    match /bookings/{bookingId} {
+      allow read: if signedIn() &&
+        (
+          isAdmin() ||
+          resource.data.userId == request.auth.uid ||
+          resource.data.ownerId == request.auth.uid
+        );
+
+      // All booking writes go through secured Cloud Functions.
+      allow create, update, delete: if false;
+    }
+
+    match /reviews/{reviewId} {
+      allow read: if true;
+
+      allow create: if signedIn() &&
+        request.resource.data.userId == request.auth.uid &&
+        exists(
+          /databases/$(database)/documents/bookings/
+          $(request.resource.data.bookingId)
+        ) &&
+        get(
+          /databases/$(database)/documents/bookings/
+          $(request.resource.data.bookingId)
+        ).data.userId == request.auth.uid &&
+        get(
+          /databases/$(database)/documents/bookings/
+          $(request.resource.data.bookingId)
+        ).data.status == 'completed';
+
+      allow update: if signedIn() &&
+        resource.data.userId == request.auth.uid &&
+        request.resource.data.userId == resource.data.userId &&
+        request.resource.data.bookingId == resource.data.bookingId &&
+        request.resource.data.hotelId == resource.data.hotelId;
+
+      allow delete: if isAdmin() ||
+        (
+          signedIn() &&
+          resource.data.userId == request.auth.uid
+        );
+    }
+
+    match /roomInventory/{inventoryId} {
+      allow read, write: if false;
+    }
+
+    match /notifications/{userId}/items/{notificationId} {
+      allow read, update, delete: if signedIn() &&
+        request.auth.uid == userId;
+
+      allow create: if false;
+    }
+  }
+}

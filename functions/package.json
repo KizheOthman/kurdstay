@@ -1,0 +1,26 @@
+{
+  "name": "kurdstay-functions",
+  "private": true,
+  "main": "lib/index.js",
+  "engines": {
+    "node": "22"
+    
+  },
+  "scripts": {
+    "lint": "echo lint skipped",
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start",
+    "deploy": "firebase deploy --only functions",
+    "seed": "tsx src/seed.ts"
+    
+  },
+  "dependencies": {
+    "firebase-admin": "latest",
+    "firebase-functions": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

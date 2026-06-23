@@ -1,0 +1,70 @@
+name: kurdstay
+description: Hotel booking application for the Kurdistan Region.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Firebase
+  firebase_core: ^4.11.0
+  firebase_auth: ^6.5.4
+  cloud_firestore: ^6.6.0
+  firebase_storage: ^13.4.3
+  firebase_messaging: ^16.4.1
+  cloud_functions: ^6.3.3
+
+  # Maps and GPS
+  google_maps_flutter: ^2.17.1
+  geolocator: ^14.0.3
+
+  # Camera, images and QR
+  image_picker: ^1.2.2
+  mobile_scanner: ^7.2.0
+  qr_flutter: ^4.1.0
+  cached_network_image: ^3.4.1
+  photo_view: ^0.15.0
+
+  # Notifications and connectivity
+  flutter_local_notifications: ^22.0.1
+  connectivity_plus: ^7.1.1
+
+  # Utilities
+  intl: ^0.20.2
+  uuid: ^4.5.3
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_native_splash: ^2.4.8
+  icons_launcher: ^3.1.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/app_logo.jpeg
+  android: true
+  ios: false
+  fullscreen: true
+  android_12:
+    color: "#FFFFFF"
+    image: assets/images/app_logo.jpeg
+    icon_background_color: "#FFFFFF"
+
+icons_launcher:
+  image_path: assets/images/app_logo.jpeg
+  platforms:
+    android:
+      enable: true
+      adaptive_background_color: "#FFFFFF"
+      adaptive_foreground_image: assets/images/app_logo.jpeg
