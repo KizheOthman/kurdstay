@@ -992,8 +992,6 @@ Before production use, additional work is recommended for:
 
 ## Contributors
 
-Add the four group members here:
-
 ```text
 1. Hazhan Halwan QIU23-0418 
 2. Kizhe Othman QIU23-0423 
@@ -1004,8 +1002,6 @@ Add the four group members here:
 ---
 
 ## Links
-
-Add the final project links:
 
 ```text
 GitHub Repository:https://github.com/KizheOthman/kurdstay
