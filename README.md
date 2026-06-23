@@ -762,58 +762,58 @@ Example Markdown:
 
 ### Authentication
 
-- [ ] Register a new account
-- [ ] Receive verification email
-- [ ] Verify without restarting the app
-- [ ] Log in
-- [ ] Reset password
-- [ ] Log out
+ Register a new account
+ Receive verification email
+ Verify without restarting the app
+ Log in
+ Reset password
+ Log out
 
 ### User
 
-- [ ] Search hotels
-- [ ] Filter by city
-- [ ] Sort by price
-- [ ] Open map
-- [ ] View hotel gallery
-- [ ] Book a room
-- [ ] Cancel a booking
-- [ ] Reschedule a booking
-- [ ] View QR code
-- [ ] Submit a review
+ Search hotels
+ Filter by city
+ Sort by price
+ Open map
+ View hotel gallery
+ Book a room
+ Cancel a booking
+ Reschedule a booking
+ View QR code
+ Submit a review
 
 ### Owner
 
-- [ ] Create hotel
-- [ ] Upload multiple photos
-- [ ] Select map location
-- [ ] Create room types
-- [ ] Edit hotel
-- [ ] Soft-delete hotel
-- [ ] Create manual booking
-- [ ] Confirm booking
-- [ ] Scan guest QR
-- [ ] Complete booking
+ Create hotel
+ Upload multiple photos
+ Select map location
+ Create room types
+ Edit hotel
+ Soft-delete hotel
+ Create manual booking
+ Confirm booking
+ Scan guest QR
+ Complete booking
 
 ### Administrator
 
-- [ ] View users
-- [ ] Change user role
-- [ ] View hotels
-- [ ] Activate or deactivate hotel
-- [ ] View bookings
-- [ ] Change booking status
+ View users
+ Change user role
+ View hotels
+ Activate or deactivate hotel
+ View bookings
+ Change booking status
 
 ### Mobile Features
 
-- [ ] GPS permission
-- [ ] Current location
-- [ ] Google Maps
-- [ ] Camera permission
-- [ ] QR scanner
-- [ ] Push notifications
-- [ ] Local notifications
-- [ ] Connectivity warning
+ GPS permission
+ Current location
+ Google Maps
+ Camera permission
+ QR scanner
+ Push notifications
+ Local notifications
+ Connectivity warning
 
 ---
 
@@ -995,10 +995,10 @@ Before production use, additional work is recommended for:
 Add the four group members here:
 
 ```text
-1. Name — Student Number — Email
-2. Name — Student Number — Email
-3. Name — Student Number — Email
-4. Name — Student Number — Email
+1. Hazhan Halwan QIU23-0418 
+2. Kizhe Othman QIU23-0423 
+3. Arwan Awat QIU23-0265 
+
 ```
 
 ---
@@ -1008,10 +1008,8 @@ Add the four group members here:
 Add the final project links:
 
 ```text
-GitHub Repository:
-Recorded Demonstration:
-Storyboard:
-Project Report:
+GitHub Repository:https://github.com/KizheOthman/kurdstay
+Recorded Demonstration:https://youtu.be/0eke1OtaMqM
 ```
 
 ---
